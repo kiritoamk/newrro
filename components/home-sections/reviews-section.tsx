@@ -5,26 +5,7 @@ import { Star } from "lucide-react";
 import { Animatedreviewsstu } from "../ui/reviews-stu";
 import { Animatedreviewsexp } from "../ui/reviews-exp";
 
-const reviews = [
-  {
-    name: "John Doe",
-    role: "Student",
-    content: "NEWRRO's courses have been instrumental in my robotics journey. The hands-on approach and expert instructors make complex concepts easy to understand.",
-    rating: 5,
-  },
-  {
-    name: "Jane Smith",
-    role: "Robotics Enthusiast",
-    content: "The ARJUNA Edu Kit is a game-changer. It's well-designed and provides an excellent platform for learning and experimenting with robotics.",
-    rating: 5,
-  },
-  {
-    name: "Mike Johnson",
-    role: "Industry Professional",
-    content: "NEWRRO's commitment to innovation in robotics education is commendable. Their courses and resources are up-to-date with the latest industry trends.",
-    rating: 4,
-  },
-];
+
 
 export function ReviewsSection() {
   return (

@@ -4,7 +4,7 @@
 
 import { motion } from "framer-motion";
 import { Navigation, Mic, QrCode, Globe, Eye, MapPin } from "lucide-react";
-// import { BackgroundGradient } from "../ui/card-bg-gradient";
+
 
 const intelligenceFeatures = [
   {
@@ -42,9 +42,6 @@ const intelligenceFeatures = [
 export function IntelligenceFeatures() {
   return (
     <section className="py-20 bg-gray-50 relative overflow-hidden">
-      {/* Background pattern */}
-      {/* <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(0,0,0,0.02)_25%,transparent_25%,transparent_75%,rgba(0,0,0,0.02)_75%,rgba(0,0,0,0.02)),linear-gradient(45deg,rgba(0,0,0,0.02)_25%,transparent_25%,transparent_75%,rgba(0,0,0,0.02)_75%,rgba(0,0,0,0.02))] bg-[length:40px_40px]" /> */}
-
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
