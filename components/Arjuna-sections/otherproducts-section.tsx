@@ -94,10 +94,10 @@ export function ProductTabs() {
         className="text-center mb-16"
       >
         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-          Product Specifications
+          Products
         </h2>
         <p className="text-xl text-gray-200 max-w-2xl mx-auto">
-          Dive into the detailed specifications that power this advanced device.
+          Look through our other products.
         </p>
       </motion.div>
       <div className="h-[20rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-40">

@@ -10,15 +10,15 @@ interface Collaborator {
 }
 
 const collaborators: Collaborator[] = [
-  { name: "NMIT", logo: "/logos/nmit.png" },
+  { name: "NMIT", logo: "/assets/logos/nitte png.png" },
   { name: "CRR", logo: "/logos/crr.png" },
-  { name: "JSS", logo: "/logos/jss.png" },
-  { name: "IEEE Bangalore", logo: "/logos/ieee-bangalore.png" },
-  { name: "REVA", logo: "/logos/reva.png" },
+  { name: "JSS", logo: "/assets/logos/jssate.png" },
+  { name: "IEEE Bangalore", logo: "/assets/logos/Screenshot 2024-01-17 191858.png" },
+  { name: "REVA", logo: "/assets/logos/reva.png" },
   { name: "MS Engineering", logo: "/logos/ms-engineering.png" },
-  { name: "Vidyashilp", logo: "/logos/vidyashilp.png" },
-  { name: "BIT", logo: "/logos/bit.png" },
-  { name: "Sir MVIT", logo: "/logos/sir-mvit.png" },
+  { name: "Vidyashilp", logo: "/assets/logos/vsu.png" },
+  { name: "BIT", logo: "/assets/logos/BIT.webp" },
+  { name: "Sir MVIT", logo: "/assets/logos/SirMVIT-Logo.png" },
 ];
 
 export function CollaborationSection() {

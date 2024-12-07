@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { InfiniteMovingCards } from "@/components/ui/imagemoving";
-import Image from "next/image"; // Import Next.js Image component
+import Image from "next/image";
 
 const services = [
   {
@@ -41,11 +41,6 @@ const services = [
 ];
 
 export function ServicesSection() {
-  const cardItems = services.map(service => ({
-    imageSrc: service.imageSrc,
-    alt: service.alt,
-  }));
-
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -63,18 +58,13 @@ export function ServicesSection() {
 
         {/* Infinite Moving Image Cards */}
         <div className="mb-16">
-          <div className="flex space-x-2 overflow-x-auto">
-            {cardItems.map((item, index) => (
-              <div key={index} className="relative w-32 h-32">
-                <Image
-                  src={item.imageSrc}
-                  alt={item.alt}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-            ))}
-          </div>
+          <InfiniteMovingCards
+            items={services}
+            direction="left"
+            speed="normal"
+            pauseOnHover={true}
+            className="overflow-hidden"
+          />
         </div>
       </div>
     </section>
