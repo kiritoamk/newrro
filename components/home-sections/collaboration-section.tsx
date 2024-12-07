@@ -1,0 +1,68 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+// Define the collaborators array with explicit typing
+interface Collaborator {
+  name: string;
+  logo: string;
+}
+
+const collaborators: Collaborator[] = [
+  { name: "NMIT", logo: "/logos/nmit.png" },
+  { name: "CRR", logo: "/logos/crr.png" },
+  { name: "JSS", logo: "/logos/jss.png" },
+  { name: "IEEE Bangalore", logo: "/logos/ieee-bangalore.png" },
+  { name: "REVA", logo: "/logos/reva.png" },
+  { name: "MS Engineering", logo: "/logos/ms-engineering.png" },
+  { name: "Vidyashilp", logo: "/logos/vidyashilp.png" },
+  { name: "BIT", logo: "/logos/bit.png" },
+  { name: "Sir MVIT", logo: "/logos/sir-mvit.png" },
+];
+
+export function CollaborationSection() {
+  return (
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        {/* Title Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+            We Work With
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Collaborating with leading institutions to bring you the best in robotics education.
+          </p>
+        </motion.div>
+
+        {/* Collaborators Grid */}
+        <div className="grid grid-cols-3 md:grid-cols-5 gap-8">
+          {collaborators.map((collaborator, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="flex items-center justify-center"
+            >
+              <Image
+                src={collaborator.logo}
+                alt={collaborator.name}
+                width={120}
+                height={80}
+                className="max-w-full h-auto"
+              />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
