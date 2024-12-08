@@ -73,6 +73,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^15.0.4",
     "file-loader": "^6.2.0"
   }
 }

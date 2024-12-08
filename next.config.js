@@ -1,4 +1,7 @@
-const { withNextVideo } = require('next-video/process')
+const { withNextVideo } = require('next-video/process');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -7,4 +10,5 @@ const nextConfig = {
   },
 };
 
-module.exports = withNextVideo(nextConfig, { folder: 'public' });
+// Chain the withNextVideo and withBundleAnalyzer
+module.exports = withBundleAnalyzer(withNextVideo(nextConfig, { folder: 'public' }));
