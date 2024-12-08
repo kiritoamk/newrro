@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ChevronRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,53 +10,51 @@ import {
   DialogTrigger,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { BackgroundGradientAnimation } from "@/components/ui/bg-gradient";
 
 export function HeroSection() {
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const video = videoRef.current;
+
     if (video) {
+      // Ensure the video plays continuously
       const playVideo = () => {
         video.play().catch((error) => {
           console.error("Video autoplay failed:", error);
-          setIsVideoLoaded(true);
         });
       };
 
-      video.addEventListener("loadedmetadata", () => {
-        setIsVideoLoaded(true);
-        playVideo();
-      });
-
-      video.addEventListener("error", (e) => {
-        console.error("Video error:", e);
-        setIsVideoLoaded(true);
-      });
+      playVideo();
+      video.addEventListener("ended", playVideo);
 
       return () => {
-        video.removeEventListener("loadedmetadata", playVideo);
-        video.removeEventListener("error", () => {});
+        video.removeEventListener("ended", playVideo);
       };
     }
   }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Animation */}
-      <div className="absolute inset-0 z-0">
-        <BackgroundGradientAnimation />
-      </div>
+      {/* Background Video */}
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 z-0 w-full h-full object-cover"
+      >
+        <source src="/v2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
       {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-4">
+      <div className="relative z-10 container mx-auto px-4 text-center">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="text-center"
         >
           <motion.h1
             initial={{ y: 50, opacity: 0 }}
@@ -73,20 +71,22 @@ export function HeroSection() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-6"
+            className="text-xl md:text-2xl text-white font-semibold max-w-3xl mx-auto mb-6 relative z-10"
+            style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.4)' }}
           >
             &quot;Bring your imaginations to life with us.&quot;
           </motion.p>
 
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto mb-12"
-          >
-            Let us be your #1 stepping-stone towards the endless possibilities
-            of your creations.
-          </motion.p>
+<motion.p
+  initial={{ y: 20, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ duration: 0.8, delay: 0.5 }}
+  className="text-lg md:text-xl text-white/90 font-medium max-w-3xl mx-auto mb-12 relative z-10"
+  style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.4)' }}
+>
+  Let us be your #1 stepping-stone towards the endless possibilities of your creations.
+</motion.p>
+
 
           <motion.div
             initial={{ y: 20, opacity: 0 }}
@@ -102,13 +102,8 @@ export function HeroSection() {
                 Get Started
                 <ChevronRight className="ml-2 transition-transform group-hover:translate-x-1" />
               </span>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-[#df5bd3] to-[#7e5bf6]"
-                initial={{ x: "100%" }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3 }}
-              />
             </Button>
+
             <Dialog>
               <DialogTrigger asChild>
                 <Button
